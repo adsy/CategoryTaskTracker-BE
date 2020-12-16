@@ -16,7 +16,6 @@ exports.getSingleCategory = async (req, reply) => {
   try {
     // get the id from the parameters
     const id = req.params === undefined ? req.id : req.params.id;
-    console.log(id);
     const category = Category.findById(id);
     return category;
   } catch (e) {
@@ -26,13 +25,9 @@ exports.getSingleCategory = async (req, reply) => {
 
 exports.addCategory = async (req, reply) => {
   try {
-    console.log("trying here");
-    console.log(req.body);
     // grabs the details of category in the request body
     let category = new Category(req.body);
     // saves new category to mongo DB
-
-    console.log(category);
     return category.save();
   } catch (e) {
     console.log(e);
